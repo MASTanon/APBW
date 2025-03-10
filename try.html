@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asia Prime - Beauty and Wellness Trading</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .header {
+            background-color: #2e9d4c;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-icon, .search-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .profile-icon, .cart-icon {
+            font-size: 24px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+        
+        .hero {
+            background-image: url('/api/placeholder/800/400');
+            background-size: cover;
+            background-position: center;
+            height: 220px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(49, 133, 156, 0.7);
+        }
+        
+        .logo-container {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+        }
+        
+        .logo {
+            font-family: 'Script MT Bold', cursive;
+            font-size: 60px;
+            color: #ffd700;
+            font-weight: normal;
+            margin-bottom: 5px;
+        }
+        
+        .tagline {
+            color: #ffd700;
+            font-size: 20px;
+        }
+        
+        .products-section {
+            background-image: url('/api/placeholder/800/500');
+            background-size: cover;
+            background-position: center;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            height: 350px;
+        }
+        
+        .products-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+            max-width: 1200px;
+        }
+        
+        .product-image {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            margin: 0 5px;
+        }
+        
+        .categories-nav {
+            background-color: #2e9d4c;
+            display: flex;
+            justify-content: space-around;
+            padding: 15px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .category-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 33.33%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .category-item:hover {
+            background-color: #248a3f;
+        }
+        
+        .category-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .category-number {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .category-text {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #000;
+            color: white;
+            padding: 40px 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-heading {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .location-info, .hours-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .location-icon, .hours-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #2e9d4c;
+        }
+        
+        .contact-info {
+            margin-bottom: 15px;
+        }
+        
+        .contact-number {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-icon {
+            font-size: 20px;
+            color: white;
+        }
+        
+        .subscribe-section {
+            margin-top: 20px;
+        }
+        
+        .subscribe-form {
+            display: flex;
+            margin-top: 10px;
+        }
+        
+        .email-input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            background-color: #111;
+            color: white;
+        }
+        
+        .submit-button {
+            background-color: #333;
+            border: none;
+            padding: 10px 15px;
+            color: white;
+            cursor: pointer;
+        }
+        
+        .submit-button:hover {
+            background-color: #444;
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        
+        .back-to-top {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background-color: #2e9d4c;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .back-to-top:hover {
+            background-color: #248a3f;
+        }
+        
+        .chat-button {
+            width: 50px;
+            height: 50px;
+            background-color: #2e9d4c;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <div class="header-left">
+            <div class="menu-icon"><i class="fas fa-bars"></i></div>
+            <div class="search-icon"><i class="fas fa-search"></i></div>
+        </div>
+        <div class="header-right">
+            <div class="profile-icon"><i class="fas fa-user"></i></div>
+            <div class="cart-icon"><i class="fas fa-shopping-cart"></i></div>
+        </div>
+    </div>
+    
+    <!-- Hero Section with Logo -->
+    <div class="hero">
+        <div class="logo-container">
+            <h1 class="logo">Asia Prime</h1>
+            <p class="tagline">Beauty and Wellness Trading</p>
+        </div>
+    </div>
+    
+    <!-- Products Display Section -->
+    <div class="products-section">
+        <div class="products-container">
+            <!-- Products would be placed here in a real implementation -->
+            <img src="/api/placeholder/180/250" alt="Beauty Products" class="product-image">
+            <img src="/api/placeholder/180/250" alt="Asiafit Green" class="product-image">
+            <img src="/api/placeholder/180/250" alt="Asiafit Red" class="product-image">
+            <img src="/api/placeholder/180/250" alt="Asiafit Gold" class="product-image">
+            <img src="/api/placeholder/180/250" alt="Primo Black" class="product-image">
+        </div>
+    </div>
+    
+    <!-- Categories Navigation -->
+    <div class="categories-nav">
+        <div class="category-item">
+            <div class="category-icon"><i class="fas fa-mug-hot"></i></div>
+            <div class="category-number">5</div>
+            <p class="category-text">"Start your day with the perfect cup—bold, smooth, and brewed to fuel your passion!"</p>
+        </div>
+        <div class="category-item">
+            <div class="category-icon"><i class="fas fa-glass-martini-alt"></i></div>
+            <div class="category-number">3</div>
+            <p class="category-text">"Refresh, recharge, and enjoy every sip—your perfect beverage awaits!"</p>
+        </div>
+        <div class="category-item">
+            <div class="category-icon"><i class="fas fa-spa"></i></div>
+            <div class="category-number">2</div>
+            <p class="category-text">"Enhance your beauty with cosmetics that inspire confidence and radiance in every look!"</p>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 class="footer-heading">Company Information</h3>
+                <div class="location-info">
+                    <div class="location-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div>
+                        <p>Block 11 Lot 2 Samuel Street Corner Canaynay Avenue BF Martinville, Las Piñas, 1744 Metro Manila</p>
+                    </div>
+                </div>
+                <div class="hours-info">
+                    <div class="hours-icon"><i class="far fa-clock"></i></div>
+                    <div>
+                        <p>Monday - Saturday 8:00 AM - 5:00PM<br>Sunday - Closed</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Contact Information:</h3>
+                <div class="contact-info">
+                    <p>Mobile Number:</p>
+                    <span class="contact-number">0922-848-5826</span>
+                    <span class="contact-number">0917-318-6865</span>
+                    <span class="contact-number">0919-095-2387</span>
+                    <span class="contact-number">0917-505-1975</span>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3 class="footer-heading">Other Links:</h3>
+                <p>Email Us:</p>
+                <p>sales@asiaprimeph.com</p>
+                
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-shopify"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                
+                <div class="subscribe-section">
+                    <h4>Subscribe to our emails</h4>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Email" class="email-input">
+                        <button type="submit" class="submit-button">→</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <a href="#" class="back-to-top"><i class="fas fa-chevron-up"></i></a>
+            <div class="chat-button"><i class="fas fa-ellipsis-h"></i></div>
+        </div>
+    </footer>
+</body>
+</html>
